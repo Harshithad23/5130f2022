@@ -1,0 +1,44 @@
+@keyframes bounce {
+	100% {
+		background-position: 15% 50%;
+		background-color: #dde0ab;
+	}
+}
+html,body {
+	height: 100%;
+	background-color: #dde0ab;
+}
+body {
+	display: grid;
+	place-items: center;
+	margin:0;
+	padding: 0 20px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*animation: bounce 6s infinite alternate linear;*/
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color:#dde0ab;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #dde0ab;
+}

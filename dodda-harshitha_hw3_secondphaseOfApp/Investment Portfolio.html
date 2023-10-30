@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+	
+  font-family: Verdana, Sans-serif;
+  background-color: #dde0ab;
+}
+</style>
+    <title>Investment Portfolio</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>My Investment Portfolio</h1>
+ <canvas id="investmentChart" style="max-width: 400px; max-height: 400px;"></canvas>
+
+    <script>
+        // Investment data
+        var investmentData = {
+            labels: ["House Rent", "Current and Gas", "Groceries", "Savings"],
+            datasets: [{
+                label: "House Rent",
+                data: [40, 20, 25, 15], // Replace with your investment percentages
+                backgroundColor: ["#FF5733", "#33FF57", "#5733FF", "#33FFFF"]
+            }]
+        };
+
+        // Get the canvas element and create the bar graph
+        var ctx = document.getElementById("investmentChart").getContext("2d");
+        var investmentChart = new Chart(ctx, {
+            type: "bar",
+            data: investmentData
+        });
+    </script>
+</body>
+</html>

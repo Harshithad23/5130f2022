@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View User Data</title>
+</head>
+<body>
+    <h1>User Data</h1>
+    <div id="userDataList"></div>
+
+    <script>
+        // Retrieve the stored user data from Local Storage
+        var storedUserData = JSON.parse(localStorage.getItem("userList"));
+
+        // Check if there is any data to display
+        if (storedUserData && storedUserData.length > 0) {
+            var userDataList = document.getElementById("userDataList");
+
+            // Create a table to display the data
+            var table = document.createElement("table");
+            table.border = "1";
+
+            // Create table header
+            var headerRow = table.insertRow(0);
+            for (var key in storedUserData[0]) {
+                var headerCell = headerRow.insertCell(-1);
+                headerCell.innerHTML = key;
+            }
+
+            // Create table rows with data
+            for (var i = 0; i < storedUserData.length; i++) {
+                var dataRow = table.insertRow(i + 1);
+                for (var key in storedUserData[i]) {
+                    var dataCell = dataRow.insertCell(-1);
+                    dataCell.innerHTML = storedUserData[i][key];
+                }
+            }
+
+            userDataList.appendChild(table);
+        } else {
+            userDataList.innerHTML = "No user data available.";
+        }
+    </script>
+</body>
+</html>
+<!--<!DOCTYPE html>
+<html>
+<head>
+    <title>View User Data</title>
+</head>
+<style>
+body {
+	
+  font-family: Verdana, Sans-serif;
+  background-color: #dde0ab;
+}
+</style>
+<body>
+    <h1>User Data</h1>
+    <div id="userDataList"></div>
+
+    <script>
+        // Retrieve the stored user data from Local Storage
+        var storedUserData = JSON.parse(localStorage.getItem("userList"));
+
+        // Check if there is any data to display
+        if (storedUserData && storedUserData.length > 0) {
+            var userDataList = document.getElementById("userDataList");
+
+            // Create a table to display the data
+            var table = document.createElement("table");
+            table.border = "1";
+
+            // Create table header
+            var headerRow = table.insertRow(0);
+            for (var key in storedUserData[0]) {
+                var headerCell = headerRow.insertCell(-1);
+                headerCell.innerHTML = key;
+            }
+
+            // Create table rows with data
+            for (var i = 0; i < storedUserData.length; i++) {
+                var dataRow = table.insertRow(i + 1);
+                for (var key in storedUserData[i]) {
+                    var dataCell = dataRow.insertCell(-1);
+
+                    // Check if the current key is "resume" and format accordingly
+                    if (key === "resume") {
+                        dataCell.innerHTML = '<a href="' + storedUserData[i][key] + '" target="_blank">View Resume</a>';
+                    } else {
+                        dataCell.innerHTML = storedUserData[i][key];
+                    }
+                }
+            }
+
+            userDataList.appendChild(table);
+        } else {
+            userDataList.innerHTML = "No user data available.";
+        }
+    </script>
+</body>
+</html>

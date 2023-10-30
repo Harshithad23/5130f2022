@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  <meta http-equiv="Content-Style-Type" content="text/css">
+	  <title>User Data</title>
+	  <link rel="stylesheet" type="text/css" href="harsh2.css">
+	</head>
+	<body>
+
+		<div class="main">
+			<div class="nav" style="width: 100%; height: 10%">
+				<ul>
+					<li><a href="file:///C:/Users/harsh/Desktop/dodda-harshitha_hw2-firstApp/Harshitha_Dodda_Resume.pdf" target="_blank"><u>My Resume</u></a></li>
+					<li><a href="Investment_Portfolio.html"><u>Investment Portfolio</u></a></li>
+					
+					<li><a href="User_data.html"><u>User Data</u></a></li>
+					<li><a href="harsh.html"><u>Home</u></a></li>
+					<BR/><BR/><BR/>
+	  					  	
+				</ul> 
+			</div>
+			<h1 style="color : black ">Tell me about your self</h1>
+		
+
+		<center><h2 style="color: black">Personal Information:</h2></center>
+
+		<form method="POST" id="form">
+	<table style="width: 60%;  margin-left: 20%; margin-right: 20%;">
+		<tr>
+			<td>
+				What's Your Name:
+			</td>
+			<td>
+				<input type="text" id="name"  name="name">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Your current location:
+			</td>
+			<td>
+				<input type="text" id="Location" name="location">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Like to be in:
+			</td>
+			<td>
+				<input type="text" id="Like_to_be_in"  name="Like_to_be_in">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Your family is from:
+			</td>
+			<td>
+				<input type="text" id="Family_From" name="Family_From">
+			</td>
+		</tr>
+	</table>
+	<center><h2 style="color: black">More Facts:</h2></center>
+
+	<table style="width: 60%; margin-left: 20%; margin-right: 20%;">
+		<tr>
+			<td>
+				What's Your Birth_Date:
+			</td>
+
+			<td>
+				<input type="date" id="Birth_date" name="Birth_date">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				What's Your Birth Place:
+			</td>
+			<td>
+				<input type="text" id="Birth_place" name="Birth_place">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Where You live now:
+			</td>
+
+			<td>
+				<input type="text" id="live_place" name="live_place">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				What are your long term goals:
+			</td>
+
+			<td>
+				<input type="text" id="longterm_goals" name="longterm_goals">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Where I'd like to live:
+			</td>
+
+			<td>
+				<input type="text" id="like_to_live" name="like_to_live">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Where your "significant other" was born/grew up:
+			</td>
+
+			<td>
+				<input type="text" id="significant_grow_place"  name="significant_grow_place">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Is Your Significant's Birthplace is same with your birthplace?:
+			</td>
+			<td>
+				<select name="compare_place" id="compare_place">
+  					<option value="yes">Yes</option>
+  					<option value="no">No</option>
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Upload your Picture:
+			</td>
+			<td>
+				<input type="file" name="Filepath1" >
+
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Upload your Resume:
+			<input type="file" id="resumeUpload" accept=".pdf, .doc, .docx">		
+			</td>
+		</tr>
+		<div id="resumeDisplay">
+    <!-- Resume will be displayed here -->
+</div>
+
+	</table>	
+	<center>
+		<button id="btn" class="btn" type="submit">Submit</button>
+	</center>
+</form>
+</body>
+	<script>
+  document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the form from submitting normally
+
+    // Get values from the form
+    var name = document.getElementById("name").value;
+    var location = document.getElementById("Location").value;
+    var likeToBeIn = document.getElementById("Like_to_be_in").value;
+    var familyFrom = document.getElementById("Family_From").value;
+    var birthDate = document.getElementById("Birth_date").value;
+    var birthPlace = document.getElementById("Birth_place").value;
+    var livePlace = document.getElementById("live_place").value;
+    var likeToLive = document.getElementById("like_to_live").value;
+    var significantGrowPlace = document.getElementById("significant_grow_place").value;
+    var comparePlace = document.getElementById("compare_place").value;
+	var resumeFile = document.getElementById("resumeUpload").files[0];
+
+    
+    var userData = {
+      name: name,
+      location: location,
+      likeToBeIn: likeToBeIn,
+      familyFrom: familyFrom,
+      birthDate: birthDate,
+      birthPlace: birthPlace,
+      livePlace: livePlace,
+      likeToLive: likeToLive,
+      significantGrowPlace: significantGrowPlace,
+      comparePlace: comparePlace,
+	  resumeFile: resumeFile,
+    };
+
+    // Retrieve existing user data or initialize an empty array
+    var storedUserData = JSON.parse(localStorage.getItem("userList")) || [];
+
+    // Add the new user data to the array
+    storedUserData.push(userData);
+
+    // Store the updated array back in Local Storage
+    localStorage.setItem("userList", JSON.stringify(storedUserData));
+
+    // Optionally, display a success message or reset the form
+    alert("Data has been stored successfully!");
+    document.getElementById("form").reset();
+	// Check if the current key is "resume" and format accordingly
+if (key === "resume") {
+    dataCell.innerHTML = '<a href="' + storedUserData[i][key] + '" target="_blank">View Resume</a>';
+} else {
+    dataCell.innerHTML = storedUserData[i][key];
+}
+  });
+</script>
+</html>
