@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Information</title>
+	<style>
+        body {
+            background-color: #B284BE; 
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            var phoneRegex = /^(\(\d{3}\)|\d{3})[-. ]?\d{3}[-. ]?\d{4}$/;
+            var urlRegex = /^(https?:\/\/)?([A-Za-z0-9-]+\.)+[A-Za-z]{2,6}([A-Za-z0-9/?=&%#-_.]*)?$/;
+
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var url = document.getElementById('website').value; // Change 'url' to 'website'
+
+            if (!emailRegex.test(email)) {
+                alert('Invalid email address');
+                return false;
+            }
+
+            if (!phoneRegex.test(phone)) {
+                alert('Invalid phone number');
+                return false;
+            }
+
+            if (!urlRegex.test(url)) {
+                alert('Invalid URL');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Contact Information</h1>
+    <form action="#" method="post" onsubmit="return validateForm();"> <!-- Call validateForm() on form submission -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="website">Webpage URL:</label>
+        <input type="url" id="website" name="website" required><br><br>
+
+        <input type="submit" value="Submit">
+        <input type="button" value="Cancel" onclick="window.location.href='home.html'">
+    </form>
+</body>
+</html>
