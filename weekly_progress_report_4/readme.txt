@@ -1,0 +1,1 @@
+One thing I am proud of accomplishing in this week is learning more about web development as it is very helpful for learn new things in the HTML,JS Script and CSS . It also led to improvement in the webpage im developing as my project for the IWS. This can also help me in making my career in the web development Maintaining can lead to long-term success.
