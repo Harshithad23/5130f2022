@@ -3,7 +3,8 @@
 
 header('Content-Type: application/javascript');
 
-$cacheName = 'your-cache-name';
+$cacheVersion = 'v1';
+$cacheName = 'app-cache';
 $cacheUrls = [
     '/',
     '/index.php',
